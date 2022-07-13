@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="instalar">Install New Version</string>
+    <string name="lbl_the_old_app_is_not_available">We are not soportin this version, update now! Dont stay behind</string>
+    <string name="lbl_we_have_new_app">We have a New Version!</string>
+    <string name="sww_single">Something went wrong.</string>
+
+</resources>
