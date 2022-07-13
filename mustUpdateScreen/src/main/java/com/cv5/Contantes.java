@@ -9,6 +9,7 @@ public class Contantes {
 
     /**Otras variables**/
     public static int VERSION_APP = 1;
+    public static int VERSION_AP = 1;
     public static String LINKNEWAPP = "https://play.google.com/store/apps/details?id=";
     public static String LINK_NUEVA_APP = "com.whatsweb.clone.deleted";
 
