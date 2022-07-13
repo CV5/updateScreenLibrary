@@ -7,7 +7,7 @@ public class Contantes {
 
 
 
-    /**Otras variables**/
+     /**Otras variables**/
     public static int VERSION_APP = 1;
     public static int VERSION_AP = 1;
     public static String LINKNEWAPP = "https://play.google.com/store/apps/details?id=";
