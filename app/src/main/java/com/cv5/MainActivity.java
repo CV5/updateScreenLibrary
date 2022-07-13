@@ -16,6 +16,6 @@ public class MainActivity extends AppCompatActivity {
         MainActivity2 mainActivity2 = new MainActivity2();
 
 
-        new mustUpdateScreen(this, mainActivity2, "https://configuraciomaxplayer.blogspot.com/2022/07/configuracion-todas-las-app.html",BuildConfig.VERSION_CODE).execute();
+        new mustUpdateScreen(this, mainActivity2,"PACKAGE_NAME", "VERSION_APP", BuildConfig.VERSION_CODE).execute();
     }
 }

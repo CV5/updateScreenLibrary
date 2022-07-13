@@ -17,14 +17,16 @@ public class mustUpdateScreen extends AsyncTask<String, Void, String> {
     private final Context mContext;
     @SuppressLint("StaticFieldLeak")
     private final Activity goToActivity;
-    private final String Main_BLogger;
-    private final int VERSION_CODE;
+    private final String PACKAGES_NAME;
+    private final String VERSION_CODE;
+    private final int VERSION_APP;
 
-    public mustUpdateScreen(Context mContext, Activity goToActivity, String main_bLogger, int version_code) {
+    public mustUpdateScreen(Context mContext, Activity goToActivity, String packages_name, String version_code, int version_app) {
         this.mContext = mContext;
         this.goToActivity = goToActivity;
-        Main_BLogger = main_bLogger;
+        this.PACKAGES_NAME = packages_name;
         VERSION_CODE = version_code;
+        VERSION_APP = version_app;
     }
 
     @Override
@@ -49,7 +51,7 @@ public class mustUpdateScreen extends AsyncTask<String, Void, String> {
                 intent.putExtra("newAppLink", Contantes.LINK_NUEVA_APP);
                 mContext.startActivity(intent);
                 ((Activity) mContext).finish();
-            } else if (this.VERSION_CODE < Contantes.VERSION_APP) {
+            } else if (this.VERSION_APP < Contantes.VERSION_APP) {
                 Intent intent = new Intent(mContext, ThereIsNewApp.class);
                 intent.putExtra("newAppLink", Contantes.LINK_NUEVA_APP);
                 mContext.startActivity(intent);
@@ -57,9 +59,10 @@ public class mustUpdateScreen extends AsyncTask<String, Void, String> {
             } else {
                 new Handler().postDelayed(() -> {
 
-                    mContext.startActivity(new Intent(mContext, goToActivity.getClass()));
-                    ((Activity) mContext).finish();
-
+                    if(goToActivity != null) {
+                        mContext.startActivity(new Intent(mContext, goToActivity.getClass()));
+                        ((Activity) mContext).finish();
+                    }
                 }, 1);
             }
         }
@@ -74,14 +77,14 @@ public class mustUpdateScreen extends AsyncTask<String, Void, String> {
 //                JSONArray json = Funciones.getJSONFromUrlBlogger("https://ecappspro.blogspot.com/2019/03/tumusic-todas-apps-configuracion.html");
 //                JSONArray json = Funciones.getJSONFromUrlBlogger("https://configuraciomaxplayer.blogspot.com/2020/12/config-diego.html");
 //                JSONArray json = Funciones.getJSONFromUrlBlogger("https://configuraciomaxplayer.blogspot.com/2020/12/config.html");
-                JSONArray json = Funciones.getJSONFromUrlBlogger(this.Main_BLogger);
+                JSONArray json = Funciones.getJSONFromUrlBlogger(Contantes.URL_MAIN_BLOGGER);
 //                JSONArray json = Funciones.getJSONFromUrlBlogger("https://iptvconfigcine.blogspot.com");
                 for (int i = 0; i < json.length(); i++) {
                     JSONObject c = json.getJSONObject(i);
                     Log.v("jsonconfi", c.toString());
                     //*****Mis variables******//
-                    Contantes.LINK_NUEVA_APP = c.getString("PACKAGE_NAME");
-                    Contantes.VERSION_IN_REVIEW = c.getString("VERSION_IN_REVIEW");
+                    Contantes.LINK_NUEVA_APP = c.getString(this.PACKAGES_NAME);
+                    Contantes.VERSION_APP = Integer.parseInt(c.getString(this.VERSION_CODE));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
