@@ -20,3 +20,22 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.CV5:updateScreenLibrary:Tag'
 	}
+	
+	
+	
+
+
+Run this wherever you wanna ask for a update 
+
+	new mustUpdateScreen(this, ActivityToGo,"PACKAGE_NAME_KEY", "VERSION_APP_KEY", BuildConfig.VERSION_CODE).execute();
+
+	
+	
+	
+
+1: Context <br>
+2: Activity where you want to redirect after the check. Null if you dont want to redirect. <br>
+3: PACKAGE_NAME_KEY assing by me<br>
+4: VERSION_APP_KEY assing by me<br>
+5: BuildConfig.VERSION_CODE if the actual version code of your app, this is to force to update. 
+
