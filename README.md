@@ -26,8 +26,12 @@ Step 2. Add the dependency
 
 
 Run this wherever you wanna ask for a update 
+
+	new mustUpdateScreen(this, ActivityToGo,"PACKAGE_NAME_KEY", "VERSION_APP_KEY", BuildConfig.VERSION_CODE).execute();
+
 	
-new mustUpdateScreen(this, ActivityToGo,"PACKAGE_NAME_KEY", "VERSION_APP_KEY", BuildConfig.VERSION_CODE).execute();
+	
+	
 
 1: Context 
 2: Activity where you want to redirect after the check. Null if you dont want to redirect. 
