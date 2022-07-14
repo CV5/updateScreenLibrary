@@ -22,7 +22,10 @@ public class ThereIsNewApp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_there_is_new_app);
-        Objects.requireNonNull(getSupportActionBar()).hide();
+        if(getSupportActionBar() != null){
+            Objects.requireNonNull(getSupportActionBar()).hide();
+        }
+
 
         newAppLink = getIntent().getStringExtra("newAppLink");
 
